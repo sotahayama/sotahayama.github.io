@@ -1,0 +1,299 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --text: #1f1f1f;
+  --text-sub: #5c5c5c;
+  --line: #e2e2e2;
+  --bg: #ffffff;
+  --bg-sub: #f6f6f4;
+  --accent: #1d4f7a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ヘッダー */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 60px;
+}
+
+.site-name {
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+.nav-list a {
+  color: var(--text-sub);
+  text-decoration: none;
+}
+
+.nav-list a:hover {
+  color: var(--text);
+}
+
+/* 自己紹介 */
+.intro {
+  padding-top: 72px;
+  padding-bottom: 56px;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: 0.08em;
+}
+
+.affiliation {
+  margin: 8px 0 0;
+  color: var(--text-sub);
+}
+
+.affiliation span {
+  margin-left: 1em;
+}
+
+.lead {
+  max-width: 640px;
+  margin: 28px 0 0;
+}
+
+/* セクション共通 */
+.section {
+  padding-bottom: 56px;
+}
+
+/* 区切り線を本文と同じ幅にするため、余白の内側に引く */
+.section::before {
+  content: "";
+  display: block;
+  margin-bottom: 56px;
+  border-top: 1px solid var(--line);
+}
+
+.section-title {
+  margin: 0 0 32px;
+  font-size: 22px;
+}
+
+/* 制作物 */
+.work {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 48px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--line);
+}
+
+.work:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.work-text-only {
+  grid-template-columns: 1fr;
+}
+
+.work-image {
+  margin: 0;
+  border: 1px solid var(--line);
+  background: var(--bg-sub);
+}
+
+.work h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.work-meta {
+  margin: 4px 0 12px;
+  color: var(--text-sub);
+  font-size: 14px;
+}
+
+.work p {
+  margin: 0 0 12px;
+}
+
+.work-points {
+  margin: 0 0 16px;
+  padding-left: 1.2em;
+}
+
+.work-points li + li {
+  margin-top: 6px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 2px 10px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
+.work-link {
+  font-size: 14px;
+}
+
+/* 技術 */
+.skills {
+  margin: 0;
+}
+
+.skills div {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.skills div:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.skills dt {
+  font-weight: 700;
+}
+
+.skills dd {
+  margin: 0;
+}
+
+/* 経歴 */
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline li:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.timeline time {
+  color: var(--text-sub);
+  font-variant-numeric: tabular-nums;
+}
+
+/* フッター */
+.site-footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  color: var(--text-sub);
+}
+
+/* スマートフォン */
+@media (max-width: 720px) {
+  .header-inner {
+    height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .nav-list {
+    gap: 16px;
+  }
+
+  .intro {
+    padding-top: 48px;
+  }
+
+  .intro h1 {
+    font-size: 28px;
+  }
+
+  .affiliation span {
+    display: block;
+    margin-left: 0;
+  }
+
+  .work {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .skills div,
+  .timeline li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>葉山 颯太 | Portfolio</title>
+  <meta name="description" content="千葉工業大学 情報変革科学部 情報工学科 3年 葉山颯太のポートフォリオです。制作物と経歴をまとめています。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-name" href="#top">Sota Hayama</a>
+      <nav aria-label="ページ内リンク">
+        <ul class="nav-list">
+          <li><a href="#works">制作物</a></li>
+          <li><a href="#skills">技術</a></li>
+          <li><a href="#history">経歴</a></li>
+          <li><a href="#contact">連絡先</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="intro container">
+      <h1>葉山 颯太</h1>
+      <p class="affiliation">千葉工業大学 情報変革科学部 情報工学科 3年<span>2028年3月 卒業予定</span></p>
+      <p class="lead">システムを止めずに、正しく動かし続けるための仕組みに関心があります。個人開発では、ログの監視・異常検知や、記録の改ざん検知に取り組んできました。作ったものはテストや実データで確かめ、数字で改善することを大切にしています。</p>
+    </section>
+
+    <section id="works" class="section container">
+      <h2 class="section-title">制作物</h2>
+
+      <article class="work">
+        <figure class="work-image">
+          <img src="images/logwatch.png" alt="logwatch のダッシュボード。1分ごとのログ件数の推移と、検知した異常の位置が表示されている" width="1280" height="860" loading="lazy">
+        </figure>
+        <div class="work-body">
+          <h3>logwatch</h3>
+          <p class="work-meta">2026年10月 / 個人開発(生成AIと協働)</p>
+          <p>
+            Macのシステムログを1分ごとに集計してサーバーに送り、平常時から外れた動きを検知してダッシュボードに表示する仕組みです。
+          </p>
+          <ul class="work-points">
+            <li>最初の検知方法では、作業を始めただけで30分に約1,400件の誤報が出たため、知らせる対象を見直しました。</li>
+            <li>実データに既知の異常を混ぜて精度を測る仕組みを作り、統計的な方法と主成分分析(PCA)を比べました。検出率は12%から35%に上がり、通知は1時間あたり13件から7件に減りました。</li>
+            <li>ログの本文は送らず件数だけを扱い、送信に失敗して再送しても件数が二重にならないようにしています。</li>
+          </ul>
+          <ul class="tags" aria-label="使用技術">
+            <li>Swift</li><li>TypeScript</li><li>Next.js</li><li>Python</li><li>scikit-learn</li><li>PostgreSQL</li>
+          </ul>
+          <a class="work-link" href="https://github.com/sotahayama/logwatch">GitHub で見る</a>
+        </div>
+      </article>
+
+      <article class="work">
+        <figure class="work-image">
+          <img src="images/ledger-app.png" alt="台帳アプリの画面。口座ごとの残高、整合性チェックの結果、取引の入力欄が表示されている" width="760" height="860" loading="lazy">
+        </figure>
+        <div class="work-body">
+          <h3>ledger-app(入出金台帳)</h3>
+          <p class="work-meta">2026年10月 / 個人開発(生成AIと協働)</p>
+          <p>
+            銀行の元帳の考え方を再現した入出金台帳のWebアプリです。正確さが何より求められる金融システムを題材にしました。
+          </p>
+          <ul class="work-points">
+            <li>取引は追記のみで記録し、誤りは削除せず、逆向きの取消取引で打ち消します。</li>
+            <li>口座間の振替は、出金と入金を1つのトランザクションで処理し、途中で失敗したら両方を取り消します。</li>
+            <li>全履歴から残高を計算し直して保存済みの値と照らし合わせ、改ざんを検知します。同時に出金した場合も含め、20件のテストで確かめています。</li>
+          </ul>
+          <ul class="tags" aria-label="使用技術">
+            <li>TypeScript</li><li>Next.js</li><li>Prisma</li><li>SQLite</li><li>Vitest</li>
+          </ul>
+          <a class="work-link" href="https://github.com/sotahayama/ledger-app">GitHub で見る</a>
+        </div>
+      </article>
+
+      <article class="work work-text-only">
+        <div class="work-body">
+          <h3>無線同期オーケストラ</h3>
+          <p class="work-meta">2026年5月〜7月 / 大学のハッカソン・5人チーム(プロジェクトマネジメントと開発を兼任)</p>
+          <p>
+            複数台のArduinoを無線で時刻同期させ、輪唱で合奏するシステムです。
+          </p>
+          <ul class="work-points">
+            <li>無線通信の遅延を実測すると、平均12ms・標準偏差6msのばらつきがありました。</li>
+            <li>当初の目標(遅延5ms以内)は通信方式の上で難しいと判断し、根拠を示して30ms以内に見直しました。</li>
+            <li>時刻のずれの補正と、遅延を見込んで指示を前倒しで送る「先読み」を取り入れ、演奏開始のずれを9ms、受信成功率を99.6%にしました。</li>
+          </ul>
+          <ul class="tags" aria-label="使用技術">
+            <li>C/C++(Arduino)</li><li>Processing</li><li>UDP</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="work work-text-only">
+        <div class="work-body">
+          <h3>texwatch</h3>
+          <p class="work-meta">2026年7月 / 個人開発</p>
+          <p>
+            LaTeXのビルドログから、次に直すべき1件を取り出して示すmacOS向けのツールです。
+          </p>
+          <ul class="tags" aria-label="使用技術">
+            <li>Swift</li>
+          </ul>
+          <a class="work-link" href="https://github.com/sotahayama/texwatch">GitHub で見る</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="skills" class="section container">
+      <h2 class="section-title">使ったことのある技術</h2>
+      <dl class="skills">
+        <div>
+          <dt>言語</dt>
+          <dd>TypeScript / Python / Swift / C・C++ / Processing</dd>
+        </div>
+        <div>
+          <dt>フレームワーク・ライブラリ</dt>
+          <dd>Next.js(React) / Prisma / scikit-learn / NumPy / Vitest / pytest</dd>
+        </div>
+        <div>
+          <dt>データベース</dt>
+          <dd>PostgreSQL / SQLite</dd>
+        </div>
+        <div>
+          <dt>その他</dt>
+          <dd>Git・GitHub / REST API の設計 / macOS の launchd</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="history" class="section container">
+      <h2 class="section-title">経歴</h2>
+      <ol class="timeline">
+        <li><time datetime="2024-04">2024年4月</time><span>千葉工業大学 情報変革科学部 情報工学科 入学</span></li>
+        <li><time datetime="2024-04">2024年4月〜</time><span>塾講師のアルバイト(主に中学生・高校生の数学)</span></li>
+        <li><time datetime="2026-05">2026年5月〜7月</time><span>大学のハッカソンで、無線同期オーケストラを開発</span></li>
+        <li><time datetime="2026-07">2026年7月</time><span>texwatch を公開</span></li>
+        <li><time datetime="2026-10">2026年10月</time><span>ledger-app と logwatch を公開</span></li>
+      </ol>
+    </section>
+
+    <section id="contact" class="section container">
+      <h2 class="section-title">連絡先</h2>
+      <dl class="skills">
+        <div>
+          <dt>GitHub</dt>
+          <dd><a href="https://github.com/sotahayama">github.com/sotahayama</a></dd>
+        </div>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; 2026 Sota Hayama</small>
+    </div>
+  </footer>
+</body>
+</html>
